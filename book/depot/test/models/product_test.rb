@@ -27,9 +27,16 @@ class ProductTest < ActiveSupport::TestCase
   	# end
 
   	test 'test fixtures' do
-  		product = Product.new(title: products(:test).title, description: 'description', 
-  			image_url: 'image.jpg', price: 35)
+  		product = Product.new(title: products(:test).title, description: 'something', 
+  			image_url: 'pic.jpg', price: 35)
   		assert product.invalid?
   		assert_equal ['has already been taken'], product.errors[:title]
+  	end
+
+  	test "simple test" do 
+  		product = Product.new(title: "Book 1", description: "BookBook", 
+  			image_url: "aa.jpg", price: -1)
+  		actualProductPrice = 10
+  		assert_equal product.price, actualProductPrice, ["greater than 0.01"]
   	end
 end
