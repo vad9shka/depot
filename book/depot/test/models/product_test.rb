@@ -39,4 +39,14 @@ class ProductTest < ActiveSupport::TestCase
   		actualProductPrice = 10
   		assert_equal product.price, actualProductPrice, ["greater than 0.01"]
   	end
+
+  	test 'test' do
+  		product = Product.new(title: products(:test).title, 
+  			description: products(:test).description, 
+  			image_url: products(:test).image_url, 
+  			price: products(:test).price)
+
+  		equalTitle = "title"
+  		assert_equal product.title, equalTitle
+  	end	
 end
