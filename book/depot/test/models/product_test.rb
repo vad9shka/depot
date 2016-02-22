@@ -26,12 +26,19 @@ class ProductTest < ActiveSupport::TestCase
 
   	# end
 
+  	#для запуска тестового окружения исп. RAILS_ENV=test rake db:migrate
+    # rake test
   	test 'test fixtures' do
   		product = Product.new(title: products(:test).title, description: "something", 
   			image_url: "pic.jpg", price: 35)
-  		assert product.invalid?
-  		assert_equal ["has already been taken"], product.errors[:title]
-  	end
+  		# product.save
+  		assert product.valid? #значение будет валидно? -нет, значит тест не пройдет
+  		# assert_equal ["has already been taken"], product.errors[:title] 
+		# используется 2 массива на сравнение 2 значений  
+		assert_equal [I18n.translate('activerecord.errors.messages.taken')], 
+		product.errors[:title]
+	
+	end
 
   	test "simple test" do 
   		product = Product.new(title: "Book 1", description: "BookBook", 
