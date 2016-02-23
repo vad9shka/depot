@@ -32,7 +32,7 @@ class ProductTest < ActiveSupport::TestCase
   		product = Product.new(title: products(:test).title, description: "something", 
   			image_url: "pic.jpg", price: 35)
   		# product.save
-  		assert product.valid? #значение будет валидно? -нет, значит тест не пройдет
+  		assert product.valid?, 'has already been taken' #значение будет валидно? -нет, значит тест не пройдет
   		# assert_equal ["has already been taken"], product.errors[:title] 
 		# используется 2 массива на сравнение 2 значений  
 		assert_equal [I18n.translate('activerecord.errors.messages.taken')], 
@@ -56,4 +56,10 @@ class ProductTest < ActiveSupport::TestCase
   		equalTitle = "title"
   		assert_equal product.title, equalTitle 
   	end	
+
+  	test 'test db' do
+  		product = Product.create(title: nil, description: nil, image_url: nil, price: nil)
+  		assert product.valid?
+  		product.errors.messages
+  	end
 end
