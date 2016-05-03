@@ -32,11 +32,13 @@ class ProductTest < ActiveSupport::TestCase
   		product = Product.new(title: products(:test).title, description: "something", 
   			image_url: "pic.jpg", price: 35)
   		# product.save
-  		assert product.valid?, 'has already been taken' #значение будет валидно? -нет, значит тест не пройдет
-  		# assert_equal ["has already been taken"], product.errors[:title] 
-		# используется 2 массива на сравнение 2 значений  
-		assert_equal [I18n.translate('activerecord.errors.messages.taken')], 
-		product.errors[:title]
+  		 assert product.valid?, 'has already been taken' #значение будет валидно? -нет, значит тест не пройдет
+  		 # assert_equal ["has already been taken"], product.errors[:title] 
+		# используется 2 массива на сравнение 2 значений
+		# assert product.valid?  
+		# assert_equal [I18n.translate('activerecord.errors.messages.taken')], 
+		# product.errors[:title]
+		
 	
 	end
 

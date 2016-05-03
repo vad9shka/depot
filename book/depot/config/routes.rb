@@ -1,10 +1,23 @@
 Rails.application.routes.draw do
+  get 'store/index', to: 'store#index' 
+
+  get 'store/test', to: 'store#otherTemplate'
+
+  get 'store/list', to: 'catalogue#index'
+
+  get 'other/faq', to: 'other#faq'
+  get 'other/news', to: 'other#news'
+  get 'other/about', to: 'other#about'
+  get 'other/contact', to: 'other#contact'
+  # либо можно было обойтись одной строкой resources :other
+
   resources :products
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root to: 'store#index', as: 'store'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

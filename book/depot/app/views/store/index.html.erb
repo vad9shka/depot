@@ -1,0 +1,18 @@
+<h1>Каталог товаров</h1>
+
+<table>
+<tbody>
+<% @products.each do |product| %>
+	<h3 class = "list_line_even"><%= product.title %></h3>
+	<h3><%= sprintf("$%.2f" , product.price) %></h3>
+	<h3><%= image_tag(product.image_url) %></h3>
+<% end %>
+
+<h3> Общее количество товаров: <%= @product_sum.id %> <h3>
+
+<% @nice_price.each do |n_price| %>
+	<h3> Выгодный товар: <%= n_price.title %> </h3>
+<% end %>
+
+</tbody>
+</table>

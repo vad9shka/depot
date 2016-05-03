@@ -1,0 +1,12 @@
+<h1>Каталог товаров</h1>
+<table>
+	<tbody>
+		<% @products.each do |product_store| %>
+		<h3><%= product_store.title %></h3>
+		<h3><%= product_store.description %></h3>
+		<h3><%= sprintf("$%.2f" , product_store.price) %></h3>
+		<h3><%= image_tag(product_store.image_url) %></h3>
+		<h3><%= link_to "Show product", product_store%></h3>
+		<% end %>
+	</tbody>
+</table>
